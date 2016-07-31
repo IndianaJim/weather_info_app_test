@@ -7,6 +7,7 @@ if("geolocation" in Navigator){
  }
 $(document).ready(function() {
   setInterval(getWeather, 10000);
+  $(".location").text("docreadytest1");
 }); /* end doc ready... */
    
 function loadWeather(location, woeid){
@@ -15,8 +16,8 @@ function loadWeather(location, woeid){
     woeid = woeid,
     unit: 'f',
     success: function(weather){
-      city = weather.city;
-      temp = weather.temp+'&deg;';
+      city = "City goes here: " + weather.city;
+      temp = "Temp goes here: " weather.temp+'&deg;';
       //wcode = '<img class="weatherIcon" src="images/weathericons' + weather.code + '.svg";
       wind = '<p>'+ weather.wind.speed + '</p><p>' + weather.units.speed + '</p>';
       humidity = weather.humidity + ' %';
