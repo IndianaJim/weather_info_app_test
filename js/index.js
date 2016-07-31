@@ -3,7 +3,7 @@ if("geolocation" in Navigator){
      loadWeather(position.coords.latitude + position.coords.longitude);
    });
  } else {
-   loadWeather("Chicago, US, "");
+   loadWeather("Chicago, US", "");
  }
 $(document).ready(function() {
   setInterval(getWeather, 10000);
