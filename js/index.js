@@ -1,9 +1,11 @@
 if("geolocation" in Navigator){
    navigator.geolocation.getcurrentposition(function(position){
      loadWeather(position.coords.latitude + position.coords.longitude);
+     $(".location").text("docreadytestNavtest");
    });
  } else {
    loadWeather("Chicago, US", "");
+   $(".location").text("docreadyerror");
  }
 $(document).ready(function() {
   setInterval(getWeather, 10000);
