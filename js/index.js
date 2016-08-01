@@ -1,32 +1,94 @@
-if("geolocation" in Navigator){
-   navigator.geolocation.getcurrentposition(function(position){
-     loadWeather(position.coords.latitude + position.coords.longitude);
-   });
- } else {
-   loadWeather("Chicago, US, "");
- }
+function getLocation() {
+  var msg;
+
+  /** 
+  first, test for feature support
+  **/
+  if ('geolocation' in navigator) {
+    // geolocation is supported :)
+    requestLocation();
+  } else {
+    // no geolocation :(
+    msg = "Sorry, looks like your browser doesn't support geolocation";
+    outputResult(msg); // output error message
+    //$('.pure-button').removeClass('pure-button-primary').addClass('pure-button-success'); // change button style
+  }
+
+  /*** 
+  requestLocation() returns a message, either the users coordinates, or an error message
+  **/
+  function requestLocation() {
+    /**
+    getCurrentPosition() below accepts 3 arguments:
+    a success callback (required), an error callback  (optional), and a set of options (optional)
+    **/
+
+    var options = {
+      // enableHighAccuracy = should the device take extra time or power to return a really accurate result, or should it give you the quick (but less accurate) answer?
+      enableHighAccuracy: false,
+      // timeout = how long does the device have, in milliseconds to return a result?
+      timeout: 5000,
+      // maximumAge = maximum age for a possible previously-cached position. 0 = must return the current position, not a prior cached position
+      maximumAge: 0
+    };
+
+    // call getCurrentPosition()
+    navigator.geolocation.getCurrentPosition(success, error, options);
+
+    // upon success, do this
+    function success(pos) {
+      // get longitude and latitude from the position object passed in
+      var lng = pos.coords.longitude;
+      var lat = pos.coords.latitude;
+      // and presto, we have the device's location!
+      msg = 'You appear to be at longitude: ' + lng + ' and latitude: ' + lat;
+      //outputResult(msg);  output message
+      //$('.pure-button').removeClass('pure-button-primary').addClass('pure-button-success'); // change button style
+      loadWeather(lat + ',' + lng);
+    }
+
+    // upon error, do this
+    function error(err) {
+      // return the error message
+      msg = 'Error: ' + err + ' :(';
+      //outputResult(msg); // output button
+      // $('.pure-button').removeClass('pure-button-primary').addClass('pure-button-error'); // change button style
+    }
+  } // end requestLocation();
+
+  /*** 
+  outputResult() inserts msg into the DOM  
+  **/
+  function outputResult(msg) {
+    //$(".location").text(msg);
+    //console.log(msg);
+  }
+} // end getLocation()
+
 $(document).ready(function() {
-  setInterval(getWeather, 10000);
+  getLocation();
+  //setInterval(getWeather, 10000);
 }); /* end doc ready... */
-   
-function loadWeather(location, woeid){
+
+function loadWeather(location, woeid) {
   $.simpleWeather({
     location: location,
-    woeid = woeid,
+    woeid: woeid,
     unit: 'f',
-    success: function(weather){
+    success: function(weather) {
       city = weather.city;
-      temp = weather.temp+'&deg;';
-      wcode = '<img class="weatherIcon" src="images/weathericons' + weather.code + '.svg"
-      wind = '<p>'+ weather.wind.speed + '</p><p>' + weather.units.speed + '</p>';
+      temp = weather.temp + '&deg;';
+      wcode = '<img src=' + weather.image+'></img>';
+      wind = weather.wind.speed + weather.units.speed;
       humidity = weather.humidity + ' %';
-    
-      $(".location").text(city);
+      
+      $(".weatherImageCurrent").html(wcode);
+      $(".location").text('Current Weather for ' + city);
       $(".temperature").html(temp);
-      $(".windspeed").html(wind);
+      $(".windSpeed").html(wind);
       $(".humidity").text(humidity);
     },
-    error: function(error){
+    error: function(error) {
       $(".error").html('<p>' + error + '</p>');
     }
   });
