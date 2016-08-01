@@ -42,7 +42,7 @@ function getLocation() {
       var lat = pos.coords.latitude;
       // and presto, we have the device's location!
       msg = 'You appear to be at longitude: ' + lng + ' and latitude: ' + lat;
-      //outputResult(msg); // output message
+      //outputResult(msg);  output message
       //$('.pure-button').removeClass('pure-button-primary').addClass('pure-button-success'); // change button style
       loadWeather(lat + ',' + lng);
     }
@@ -60,7 +60,7 @@ function getLocation() {
   outputResult() inserts msg into the DOM  
   **/
   function outputResult(msg) {
-    //$('.result').addClass('result').html(msg);
+    //$(".location").text(msg);
     //console.log(msg);
   }
 } // end getLocation()
@@ -78,13 +78,14 @@ function loadWeather(location, woeid) {
     success: function(weather) {
       city = weather.city;
       temp = weather.temp + '&deg;';
-      //wcode = '<img class="weatherIcon" src="images/weathericons' + weather.code + '.svg";
-      wind = '<p>' + weather.wind.speed + '</p><p>' + weather.units.speed + '</p>';
+      wcode = '<img src=' + weather.image+'></img>';
+      wind = weather.wind.speed + weather.units.speed;
       humidity = weather.humidity + ' %';
-
-      $(".location").text(city);
+      
+      $(".weatherImageCurrent").html(wcode);
+      $(".location").text('Current Weather for ' + city);
       $(".temperature").html(temp);
-      $(".windspeed").html(wind);
+      $(".windSpeed").html(wind);
       $(".humidity").text(humidity);
     },
     error: function(error) {
