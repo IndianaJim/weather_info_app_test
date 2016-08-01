@@ -7,9 +7,10 @@
     
     
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+<link rel='stylesheet prefetch' href='https://github.com/IndianaJim/weather_info_app_test/tree/gh-pages/css/index.css'>
+<link rel='stylesheet prefetch' href='https://github.com/IndianaJim/weather_info_app_test/tree/gh-pages/css/standardize.css'>
 
-        <link rel="stylesheet" href="css/index.css">
-        <link rel="stylesheet" href="css/standardize.css">
+        <link rel="stylesheet" href="css/style.css">
 
     
     
@@ -21,32 +22,46 @@
     <!--
 Weather Info App project developed for a FreeCodeCamp Front-End Development Challenge.
 Uses HTML, CSS, BootStrap, & Jvascript.
-weather JSON API from www.wunderground.com
+weather API from simpleweather.js using Yahoo Weather.
 -->
 <html>
 
 <head>
   <title>Weather App</title>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Josefin+Slab|Just+Another+Hand" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lilita+One|Open+Sans" rel="stylesheet">
+
 </head>
-<body class="body pageOne page-index clearfix">
- <div class="container clearfix">
-   <p class="location"></p>
-   <p class="temperature"></p>
-   <div class="climate_bg"></div>
-   <div class="info_bg">
-     <img class="dropIcon">
-     <p class="humidity"></p>
-     <img class="windIcon">
-     <div class="windSpeed"></div>
-   </div> <!-- end info-bg div -->
-  </div> <!-- end container div -->  
-  
-  <!--  Footer  -->
+
+<body class="body weatherPage page-index clearfix">
+  <!-- <div class="row"> -->
+
+  <div class="currentWeatherBox col-sm-6 col-sm-offset-3">
+    <div>
+      <p class="weatherTitle location text-center"></p>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 text-center">
+        <p class="weatherImageCurrent"></p>
+      </div>
+      <div class="col-sm-4 text-center">
+        <p class="temperature "></p>
+      </div>
+      <div class="col-sm-4 text-center">
+        <p class="humidity weatherDetail"></p>
+        <p class="weatherLabel">Humidity</p>
+        <p class="windSpeed weatherDetail"></p>
+        <p class="weatherLabel">Wind Speed</p>
+
+      </div>
+    </div>
+  </div>
+  <!-- end currentweatherbox -->
+
+
+ <!--  Footer  -->
   <div class="text-center vertical-bottom">
-    <h5>Weather API powered by <a href="http://forecast.io/">Forecast</a>.  Developed for the FreeCodeCamp Front-end Development Challenge: Build a Weather Info page</a>.
+    <h5>Developed for the FreeCodeCamp Front-end Development Challenge: Build a Weather Info page</a>.
     </h5>
   </div>
 </body>
