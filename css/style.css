@@ -1,56 +1,58 @@
-.pageOne{
-  background:url("https://c5.staticflickr.com/8/7526/28606138756_bf294b9267_o.jpg");
+.weatherPage {
+  background: url("https://c3.staticflickr.com/9/8570/28578410882_693c8fddc0_o.jpg");
   position: relative;
-  background-size:cover;
-  background-attachment:fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  color: black;
+}
+.weatherTitle {
+  font-family: 'Lilita One', cursive;
+  font-size: 3em;
+}
+.weatherNum {
+  font-family: 'Lilita One', cursive;
+  font-size: 2.7em;
+}
+
+.weatherDetail {
+  font-family: 'Lilita One', cursive;
+  font-size: 2.5em;
+}
+
+.weatherLabel{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+}
+.currentWeatherBox {
+  background: rgb (0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.25);
+  margin-top: 3%;
   color: white;
-  ;
 }
-.quoteLine{
-  color: white;
-  font-family: 'Fredericka the Great', cursive;
-  font-size: 2vmax;
-  text-align: left;
+
+.weatherDetails {
+  /*background: rgb (0,0,0);*/
+  /*background-color: rgba(0, 0, 0, 0.5);*/
+  /*margin-top: 3%;*/
+  /*color: white;*/
 }
-.authorLine{
-  color: white;
-  font-family: 'Just Another Hand', cursive;
-  font-size: 2.4vmax;
+
+.temperature {
+  font-family: 'Lilita One', cursive;
+  font-size: 9em;
 }
-.getQuoteButton{
-      float: right;
-      position: relative;
-      right: 30%;
-      font-size: 1.2vmax;  
-}
-.tweetButton{
-      float: left;
-      position: relative;
-      left: 20%;
-      font-size: 1.2vmax;
-}
-.block{
-  color:white;
-  margin-right:auto;
-  margin-left:auto;
-}
-.vertical-align{
-  transform: translateY(30%);
+
+.weatherImageCurrent {
+  margin-top: 10%;
+  margin-left: 15%; 
 }
 .vertical-bottom{
- background-color: black;
+ background: rgb (0, 0, 0);
+ background-color: rgba(0, 0, 0, 0.25);
  position: fixed;
- opacity: .8;
+ color: white;
  width:100%;
  height:40px;
  bottom:0px;
  font-size: 0.5vmax;
-}
-.title {
-  font-family: 'Just Another Hand', cursive;
-  font-size: 5vmax;
-  color: white;
-  opacity: 0.8;
-  margin-right:5%;
-  margin-left: auto;
 }
